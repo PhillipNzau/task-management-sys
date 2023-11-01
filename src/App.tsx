@@ -1,13 +1,7 @@
-import { useState } from "react";
+import { ReactNode } from "react";
 
-function App() {
-  const [count, setCount] = useState(0);
-
-  return (
-    <>
-      <p className="text-2xl text-red-500">Hey</p>
-    </>
-  );
-}
+const App: React.FC<{ children: ReactNode }> = ({ children }) => {
+  return <>{children}</>;
+};
 
 export default App;
