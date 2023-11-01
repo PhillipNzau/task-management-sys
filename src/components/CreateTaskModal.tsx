@@ -7,19 +7,18 @@ import {
   DialogClose,
 } from "./ui/dialog";
 import { createTask } from "@/feature/todo/services/todoService";
+import { useTask } from "@/feature/todo/context/TaskContext"; // Import the useTask hook
 
 export function CreateTaskModal() {
-  //   const [error, setError] = useState<string | null>(null);
-  // Define an initial form values object
+  const { addTask } = useTask(); // Access the addTask function from the context
+
   const initialValues = {
-    name: "", // You can add more fields if needed
+    name: "",
   };
 
-  // Define a function to validate form input fields
   const validate = (values: { name: string }) => {
     const errors: { name?: string } = {};
 
-    // Validate the email field
     if (!values.name) {
       errors.name = "Task Name Required";
     }
@@ -27,19 +26,22 @@ export function CreateTaskModal() {
     return errors;
   };
 
-  // A function to handle the form submission
   const handleSubmit = async (values: { name: string }, { resetForm }: any) => {
     try {
       const data = {
         ...values,
         status: "incomplete",
       };
+
+      // Create the task and get the response
       const task = await createTask(data);
 
-      console.log("well", task);
-    } catch (error) {}
+      // Update the context with the newly created task
+      addTask(task);
+    } catch (error) {
+      // Handle errors here
+    }
 
-    // Reset the form after submission
     resetForm();
   };
 
@@ -57,7 +59,6 @@ export function CreateTaskModal() {
             </DialogHeader>
             <div className="flex items-center space-x-2">
               <div className="grid flex-1 gap-2">
-                {/* Task Name Input */}
                 <div className="mb-4">
                   <label
                     htmlFor="name"
@@ -79,7 +80,7 @@ export function CreateTaskModal() {
                 </div>
               </div>
             </div>
-            <DialogFooter className="sm:justify-between ">
+            <DialogFooter className="sm:justify-between">
               <DialogClose asChild>
                 <button
                   type="button"
@@ -91,7 +92,7 @@ export function CreateTaskModal() {
               <DialogClose asChild>
                 <button
                   type="submit"
-                  className="bg-green-400 px-4 py-2 text-white rounded-md "
+                  className="bg-green-400 px-4 py-2 text-white rounded-md"
                 >
                   Create Task
                 </button>

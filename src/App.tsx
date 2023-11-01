@@ -4,6 +4,7 @@ import AuthContext from "./feature/authentication/context/AuthContext";
 import { useAuth } from "./hooks/useAuth";
 import { useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
+import { TaskProvider } from "./feature/todo/context/TaskContext";
 
 const App: React.FC<{ children: ReactNode }> = ({ children }) => {
   const { user, setUser } = useAuth();
@@ -14,10 +15,12 @@ const App: React.FC<{ children: ReactNode }> = ({ children }) => {
   return (
     <HelmetProvider>
       <AuthContext.Provider value={{ user, setUser }}>
-        <div className="overflow-hidden bg-slate-900 h-screen ">
-          {!shouldHideNavbar && <Navbar />}
-          <div>{children}</div>
-        </div>
+        <TaskProvider>
+          <div className="overflow-hidden bg-slate-900 h-screen ">
+            {!shouldHideNavbar && <Navbar />}
+            <div>{children}</div>
+          </div>
+        </TaskProvider>
       </AuthContext.Provider>
     </HelmetProvider>
   );
