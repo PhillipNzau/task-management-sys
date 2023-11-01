@@ -71,13 +71,13 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div className="flex justify-center items-center px-4 md:px-0 mx-4 bg-purple-900 md:w-[562px] h-[530px] rounded-xl md:mx-auto">
-      <div className="w-[379px]">
+    <div className="flex justify-center items-center px-4 md:px-0  w-full h-screen py-4">
+      <div className="w-full md:w-[562px] p-6 bg-white h-auto">
         <img
           src="/fao.webp"
           alt="logo"
-          width={197}
-          height={74}
+          width={100}
+          height={100}
           className="mx-auto mb-11"
         />
 
@@ -87,13 +87,13 @@ const Login: React.FC = () => {
           onSubmit={onSubmit}
         >
           {({ isSubmitting }) => (
-            <Form>
+            <Form className="space-y-6">
               {/* Email input field */}
               <Field
                 type="email"
                 name="email"
                 placeholder="Email"
-                className="bg-transparent outline-none border border-white p-2 rounded-lg text-white font-metrophobic w-full h-14"
+                className="bg-transparent outline-blue-500 border border-slate-300 p-2  text-blue-500 font-metrophobic w-full h-14"
               />
               <ErrorMessage
                 name="email"
@@ -106,7 +106,7 @@ const Login: React.FC = () => {
                 type="password"
                 name="password"
                 placeholder="Password"
-                className="bg-transparent outline-none border border-white p-2 rounded-lg text-white font-metrophobic mt-4 w-full h-14"
+                className="bg-transparent outline-blue-500 border border-slate-300 p-2  text-blue-500 font-metrophobic w-full h-14"
               />
               <ErrorMessage
                 name="password"
@@ -118,7 +118,7 @@ const Login: React.FC = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className={`mt-12 bg-white text-purple-900 w-full h-14 rounded-lg font-metrophobic font-bold mb-3 ${
+                className={`mt-12 bg-blue-500 text-white w-full h-14  font-metrophobic font-bold ${
                   isSubmitting ? "opacity-50 cursor-not-allowed" : ""
                 }`}
               >
@@ -129,7 +129,7 @@ const Login: React.FC = () => {
               {error && <p className="text-red-500">{error}</p>}
 
               {/* Sign-up link */}
-              <p className="text-white font-metrophobic">
+              <p className="text-blue-500 font-metrophobic">
                 Don't have an account?{" "}
                 <span className="hover:cursor-pointer underline underline-offset-4">
                   <Link to="/register">Sign-up</Link>

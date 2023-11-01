@@ -86,13 +86,13 @@ const SignUp: React.FC = () => {
   };
 
   return (
-    <div className="flex justify-center items-center px-4 md:px-0  mx-4  bg-purple-900 md:w-[562px] min:h-[530px] rounded-xl md:mx-auto py-6">
-      <div className="w-[379px]">
+    <div className="flex justify-center items-center px-4 md:px-0  w-full h-screen py-4">
+      <div className="w-full md:w-[562px] p-6 bg-white h-auto">
         <img
           src="/fao.webp"
           alt="logo"
-          width={197}
-          height={74}
+          width={100}
+          height={100}
           className="mx-auto mb-11"
         />
 
@@ -107,7 +107,7 @@ const SignUp: React.FC = () => {
                 type="text"
                 name="first_name"
                 placeholder="First Name"
-                className="bg-transparent outline-none border border-white p-2 rounded-lg text-white font-metrophobic w-full h-14"
+                className="bg-transparent outline-blue-500 border border-slate-300 p-2  text-blue-500 font-metrophobic w-full h-14"
               />
               <ErrorMessage
                 name="first_name"
@@ -119,7 +119,7 @@ const SignUp: React.FC = () => {
                 type="text"
                 name="last_name"
                 placeholder="Last Name"
-                className="bg-transparent outline-none border border-white p-2 rounded-lg text-white font-metrophobic w-full h-14"
+                className="bg-transparent outline-blue-500 border border-slate-300 p-2  text-blue-500 font-metrophobic w-full h-14"
               />
               <ErrorMessage
                 name="last_name"
@@ -131,7 +131,7 @@ const SignUp: React.FC = () => {
                 type="email"
                 name="email"
                 placeholder="Email"
-                className="bg-transparent outline-none border border-white p-2 rounded-lg text-white font-metrophobic w-full h-14"
+                className="bg-transparent outline-blue-500 border border-slate-300 p-2  text-blue-500 font-metrophobic w-full h-14"
               />
               <ErrorMessage
                 name="email"
@@ -143,7 +143,7 @@ const SignUp: React.FC = () => {
                 type="password"
                 name="password"
                 placeholder="Password"
-                className="bg-transparent outline-none border border-white p-2 rounded-lg text-white font-metrophobic w-full h-14"
+                className="bg-transparent outline-blue-500 border border-slate-300 p-2  text-blue-500 font-metrophobic w-full h-14"
               />
               <ErrorMessage
                 name="password"
@@ -154,9 +154,9 @@ const SignUp: React.FC = () => {
               <Field
                 as="select"
                 name="role"
-                className="bg-transparent outline-none border border-white p-2 rounded-lg text-white font-metrophobic w-full h-14"
+                className="bg-transparent outline-blue-500 border border-slate-300 p-2  text-blue-500 font-metrophobic w-full h-14"
               >
-                <option value="charity">Charity</option>
+                <option value="admin">Admin</option>
 
                 <option value="regular">Regular</option>
               </Field>
@@ -165,7 +165,7 @@ const SignUp: React.FC = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className={`mt-12 bg-white text-purple-900 w-full h-14 rounded-lg font-metrophobic font-bold mb-3 ${
+                className={`mt-4 bg-blue-500 text-white w-full h-14  font-metrophobic font-bold ${
                   isSubmitting ? "opacity-50 cursor-not-allowed" : ""
                 }`}
               >
@@ -175,7 +175,7 @@ const SignUp: React.FC = () => {
               {/* Display error message if there is one */}
               {error && <p className="text-red-500">{error}</p>}
 
-              <p className="text-white font-metrophobic">
+              <p className="text-blue-500 font-metrophobic">
                 Already have an account?{" "}
                 <span className="hover:cursor-pointer underline underline-offset-4">
                   <Link to="/login">login</Link>
