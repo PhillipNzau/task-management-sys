@@ -1,9 +1,7 @@
-// const API_BASE_URL = 'https://donation-platform-api.onrender.com';
-const API_BASE_URL = 'http://127.0.0.1:3000';
+const API_BASE_URL = 'https://6541b6e1f0b8287df1feae33.mockapi.io/api/v1/todos';
 
 export const API_URLS = {
-  LOGIN: `${API_BASE_URL}/login`,
-  SINGUP: `${API_BASE_URL}/register`,
+  TODOS: API_BASE_URL
 };
 
 export default API_BASE_URL;
