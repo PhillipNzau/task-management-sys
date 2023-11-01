@@ -80,7 +80,7 @@ export function CreateTaskModal() {
                 </div>
               </div>
             </div>
-            <DialogFooter className="sm:justify-between">
+            <DialogFooter className=" gap-4 sm:justify-between">
               <DialogClose asChild>
                 <button
                   type="button"

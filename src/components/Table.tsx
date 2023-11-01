@@ -20,7 +20,7 @@ const TaskTable: React.FC<TableDemoProps> = ({ tasks }) => {
   const [t] = useTranslation("global");
 
   return (
-    <Table className="bg-white mt-10 rounded-md">
+    <Table className="bg-white mt-6 md:mt-10 rounded-md">
       <TableHeader>
         <TableRow>
           <TableHead className="w-[100px]">#</TableHead>

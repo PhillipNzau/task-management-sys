@@ -39,14 +39,14 @@ const Home = () => {
   const lifoTasks = filteredTasks.slice().reverse();
 
   return (
-    <section className="px-6 py-6 md:px-20 space-y-6">
+    <section className="px-6 py-6 md:px-20">
       <SEO
         title="Task Management"
         description="FAO's ultimate project management system"
         type="article"
       />
 
-      <h1 className="text-bold text-xl text-white">{t("home.title")}</h1>
+      <h1 className="text-bold text-xl text-white mb-6">{t("home.title")}</h1>
       {/* Filter */}
       <TaskFilter
         selectedTab={selectedTab}
