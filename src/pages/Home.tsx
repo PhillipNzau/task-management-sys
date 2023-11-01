@@ -8,7 +8,7 @@ const Home = () => {
         description="FAO's ultimate project management system"
         type="article"
       />
-      Home
+      <h1 className="text-bold text-xl text-white">Task Summary</h1>
     </section>
   );
 };
