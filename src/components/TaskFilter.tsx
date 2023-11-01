@@ -2,6 +2,7 @@
 import React from "react";
 import { Dialog, DialogTrigger } from "./ui/dialog";
 import { CreateTaskModal } from "./CreateTaskModal";
+import { useTranslation } from "react-i18next";
 
 type TaskFilterProps = {
   selectedTab: string;
@@ -20,11 +21,13 @@ const TaskFilter: React.FC<TaskFilterProps> = ({
   deletedTasksCount,
   incompleteTasksCount,
 }) => {
+  const [t] = useTranslation("global");
+
   const tabs = [
-    { status: "all", label: "All Tasks" },
-    { status: "incomplete", label: "Ongoing Tasks" },
-    { status: "complete", label: "Complete Tasks" },
-    { status: "deleted", label: "Deleted Tasks" },
+    { status: "all", label: `${t("tabs.all")}` },
+    { status: "incomplete", label: `${t("tabs.ongoing")}` },
+    { status: "complete", label: `${t("tabs.complete")}` },
+    { status: "deleted", label: `${t("tabs.deleted")}` },
   ];
 
   return (
@@ -75,8 +78,8 @@ const TaskFilter: React.FC<TaskFilterProps> = ({
 
       <Dialog>
         <DialogTrigger asChild>
-          <button className="bg-blue-500 px-4 py-2 text-white rounded-md hover:bg-blue-600 transition-all duration-200">
-            Create Task
+          <button className="bg-blue-500 px-4 py-2 text-white rounded-sm hover:bg-blue-600 transition-all duration-200">
+            {t("tabs.create")}
           </button>
         </DialogTrigger>
         <CreateTaskModal />

@@ -3,9 +3,11 @@ import TaskFilter from "@/components/TaskFilter";
 import TaskTable from "@/components/Table";
 import SEO from "@/components/SEO";
 import { useTask } from "@/feature/todo/context/TaskContext";
+import { useTranslation } from "react-i18next";
 
 const Home = () => {
   const { tasks } = useTask();
+  const [t] = useTranslation("global");
 
   const allTasksCount = tasks.length;
   const completeTasksCount = tasks.filter(
@@ -44,7 +46,7 @@ const Home = () => {
         type="article"
       />
 
-      <h1 className="text-bold text-xl text-white my-4">Task Summary</h1>
+      <h1 className="text-bold text-xl text-white my-4">{t("home.title")}</h1>
       {/* Filter */}
       <TaskFilter
         selectedTab={selectedTab}

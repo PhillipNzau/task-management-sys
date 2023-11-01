@@ -1,0 +1,21 @@
+{
+    "header": {
+        "message": "Bienvenue dans la Gestion de Projet Idea"
+    },
+    "home": {
+        "body": "Voici un résumé de vos tâches.",
+        "title": "Résumé des tâches."
+    },
+    "table":{
+        "taskName": "Nom de la tâche",
+        "status": "Statut"
+    },
+    "tabs": {
+        "all": "Toutes les tâches",
+        "ongoing": "Tâches en cours",
+        "complete": "Tâches terminées",
+        "deleted": "Tâches supprimées",
+        "create": "Créer une tâche",
+        "logout": "Déconnexion"
+    }
+}

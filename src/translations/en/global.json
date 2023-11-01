@@ -1,0 +1,22 @@
+{
+    "header": {
+        "message": "Welcome to Idea project Management"
+    },
+    "home": {
+        "body": "Here is a summary of your Tasks",
+        "title": "Task Summary"
+    },
+    "table": {
+        "taskName": "Task Name",
+        "status": "Status"
+    },
+    "tabs": {
+        "all": "All Tasks",
+        "ongoing": "Ongoing Tasks",
+        "complete":"Complete Tasks",
+        "deleted": "Deleted Tasks",
+        "create": "Create Task",
+        "logout": "Logout"
+
+    }
+}

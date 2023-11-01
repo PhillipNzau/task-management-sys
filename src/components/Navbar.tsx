@@ -1,9 +1,10 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 import { useUser } from "../hooks/useUser";
+import { useTranslation } from "react-i18next";
 
 const Navbar = () => {
-  const location = useLocation();
+  const [t, i18n] = useTranslation("global");
   const { logout } = useAuth();
   const { user } = useUser();
   const navigate = useNavigate();
@@ -14,9 +15,10 @@ const Navbar = () => {
     navigate(`/login`);
   };
 
-  const isActive = (path: string) => {
-    return location.pathname === path;
+  const handleChangeLanguage = (lang: string) => {
+    i18n.changeLanguage(lang);
   };
+
   return (
     <nav className="border-b border-b-gray-700 text-white md:flex items-center justify-between gap-10 py-6  md:px-12 md:py-4 ">
       <div className="flex items-center gap-4 px-4 mb-6 md:mb-0">
@@ -24,9 +26,11 @@ const Navbar = () => {
       </div>
       <div className="flex items-center justify-between gap-4  w-full">
         <div>
-          <p className="font-metrophobic">Welcome back {user?.first_name}</p>
+          <p className="font-metrophobic">
+            {t("header.message")} {user?.first_name}
+          </p>
           <p className="font-metrophobic text-sm text-gray-500">
-            Here is a summary of your Tasks
+            {t("home.body")}
           </p>
         </div>
         <div className=" flex items-center bg-gray-800 h-10 px-2 rounded-sm">
@@ -48,28 +52,22 @@ const Navbar = () => {
         </div>
         <div></div>
       </div>
-      <div className="flex items-center justify-center ">
-        <ul className="flex items-center gap-10 ">
-          <li className=" text-base w-20 transition-all duration-150 text-center hover:underline underline-offset-8">
-            <Link
-              to="/"
-              className={
-                isActive("/")
-                  ? "underline underline-offset-8 font-metrophobic"
-                  : ""
-              }
-            >
-              HOME
-            </Link>
-          </li>
-        </ul>
+      <div className="flex items-center gap-4 justify-center ">
+        <select
+          className="appearance-none h-[35px] px-4 bg-gray-700 rounded-sm"
+          value={i18n.language}
+          onChange={(e) => handleChangeLanguage(e.target.value)}
+        >
+          <option value="en">English</option>
+          <option value="fr">Français</option>
+        </select>
 
         {user && (
           <button
             onClick={handleLogout}
-            className="w-24 h-[25px] bg-blue-500 text-white text-base hover:bg-blue-800 transition-all duration-200 font-metrophobic"
+            className="min-w-[100px] h-[35px] px-4 bg-blue-500 text-white text-base hover:bg-blue-800 rounded-sm transition-all duration-200 font-metrophobic"
           >
-            Logout
+            {t("tabs.logout")}
           </button>
         )}
       </div>
