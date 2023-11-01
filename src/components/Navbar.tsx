@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 import { useUser } from "../hooks/useUser";
 import { useTranslation } from "react-i18next";
+import { useEffect } from "react";
 
 const Navbar = () => {
   const [t, i18n] = useTranslation("global");
@@ -18,6 +19,12 @@ const Navbar = () => {
   const handleChangeLanguage = (lang: string) => {
     i18n.changeLanguage(lang);
   };
+  useEffect(() => {
+    // Check if the user is not available, then redirect to "/login"
+    if (!user) {
+      navigate("/login");
+    }
+  }, [user, navigate]);
 
   return (
     <nav className="border-b border-b-gray-700 text-white md:flex items-center justify-between gap-10 py-6  md:px-12 md:py-4 ">
