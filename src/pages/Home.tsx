@@ -61,7 +61,7 @@ const Home = () => {
       {filteredTasks.length === 0 ? (
         <p className="text-white">No tasks to display.</p>
       ) : (
-        <TaskTable caption={selectedTab} tasks={lifoTasks} />
+        <TaskTable tasks={lifoTasks} />
       )}
     </section>
   );

@@ -2,7 +2,6 @@ import React from "react";
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
@@ -15,15 +14,13 @@ import { useTranslation } from "react-i18next";
 
 interface TableDemoProps {
   tasks: TodoModel[];
-  caption: string;
 }
 
-const TaskTable: React.FC<TableDemoProps> = ({ tasks, caption }) => {
+const TaskTable: React.FC<TableDemoProps> = ({ tasks }) => {
   const [t] = useTranslation("global");
 
   return (
     <Table className="bg-white mt-10 rounded-md">
-      <TableCaption>{caption.toUpperCase()} TASKS</TableCaption>
       <TableHeader>
         <TableRow>
           <TableHead className="w-[100px]">#</TableHead>
