@@ -24,6 +24,18 @@ const Home = () => {
     setSelectedTab(status);
   };
 
+  // Filter tasks based on the selected tab
+  const filteredTasks =
+    selectedTab === "all"
+      ? tasks
+      : selectedTab === "complete"
+      ? tasks.filter((task) => task.status === "complete")
+      : selectedTab === "deleted"
+      ? tasks.filter((task) => task.status === "deleted")
+      : tasks.filter((task) => task.status === "incomplete");
+  // Reverse the order of filteredTasks to display in LIFO order
+  const lifoTasks = filteredTasks.slice().reverse();
+
   return (
     <section className="p-8 px-20">
       <SEO
@@ -44,10 +56,10 @@ const Home = () => {
       />
 
       {/* table */}
-      {tasks.length === 0 ? (
-        <p className="text-white">Loading...</p>
+      {filteredTasks.length === 0 ? (
+        <p className="text-white">No tasks to display.</p>
       ) : (
-        <TaskTable caption={selectedTab} tasks={tasks} />
+        <TaskTable caption={selectedTab} tasks={lifoTasks} />
       )}
     </section>
   );

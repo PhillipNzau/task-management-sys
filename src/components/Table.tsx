@@ -9,6 +9,8 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { TodoModel } from "@/feature/todo/models/todoModel";
+import { Dialog, DialogTrigger } from "./ui/dialog";
+import { UpdateTaskModal } from "./UpdateTaskModal";
 
 interface TableDemoProps {
   tasks: TodoModel[];
@@ -28,11 +30,16 @@ const TaskTable: React.FC<TableDemoProps> = ({ tasks, caption }) => {
       </TableHeader>
       <TableBody>
         {tasks.map((task, index) => (
-          <TableRow key={index}>
-            <TableCell className="font-medium">{index + 1}</TableCell>
-            <TableCell>{task.name}</TableCell>
-            <TableCell className="">{task.status}</TableCell>
-          </TableRow>
+          <Dialog key={task.id}>
+            <DialogTrigger asChild>
+              <TableRow key={task.id}>
+                <TableCell className="font-medium">{index + 1}</TableCell>
+                <TableCell>{task.name}</TableCell>
+                <TableCell className="">{task.status}</TableCell>
+              </TableRow>
+            </DialogTrigger>
+            <UpdateTaskModal task={task} />
+          </Dialog>
         ))}
       </TableBody>
     </Table>
