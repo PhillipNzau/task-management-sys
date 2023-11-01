@@ -7,7 +7,12 @@ export default {
     './src/**/*.{ts,tsx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        poppins: ["Poppins", "sans-serif"],
+        metrophobic: ["Metrophobic", "sans-serif"],
+      },
+    },
   },
   plugins: [],
 }
