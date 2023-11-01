@@ -6,6 +6,18 @@ import { useTask } from "@/feature/todo/context/TaskContext";
 
 const Home = () => {
   const { tasks } = useTask();
+
+  const allTasksCount = tasks.length;
+  const completeTasksCount = tasks.filter(
+    (task) => task.status === "complete"
+  ).length;
+  const deletedTasksCount = tasks.filter(
+    (task) => task.status === "deleted"
+  ).length;
+  const incompleteTasksCount = tasks.filter(
+    (task) => task.status === "incomplete"
+  ).length;
+
   const [selectedTab, setSelectedTab] = useState("all");
 
   const filterByStatus = (status: string) => {
@@ -22,7 +34,14 @@ const Home = () => {
 
       <h1 className="text-bold text-xl text-white my-4">Task Summary</h1>
       {/* Filter */}
-      <TaskFilter selectedTab={selectedTab} onTabClick={filterByStatus} />
+      <TaskFilter
+        selectedTab={selectedTab}
+        onTabClick={filterByStatus}
+        allTasksCount={allTasksCount}
+        completeTasksCount={completeTasksCount}
+        deletedTasksCount={deletedTasksCount}
+        incompleteTasksCount={incompleteTasksCount}
+      />
 
       {/* table */}
       {tasks.length === 0 ? (

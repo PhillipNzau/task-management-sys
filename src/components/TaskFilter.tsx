@@ -6,9 +6,20 @@ import { CreateTaskModal } from "./CreateTaskModal";
 type TaskFilterProps = {
   selectedTab: string;
   onTabClick: (status: string) => void;
+  allTasksCount: number;
+  completeTasksCount: number;
+  deletedTasksCount: number;
+  incompleteTasksCount: number;
 };
 
-const TaskFilter: React.FC<TaskFilterProps> = ({ selectedTab, onTabClick }) => {
+const TaskFilter: React.FC<TaskFilterProps> = ({
+  selectedTab,
+  onTabClick,
+  allTasksCount,
+  completeTasksCount,
+  deletedTasksCount,
+  incompleteTasksCount,
+}) => {
   const tabs = [
     { status: "all", label: "All Tasks" },
     { status: "incomplete", label: "Ongoing Tasks" },
@@ -28,7 +39,17 @@ const TaskFilter: React.FC<TaskFilterProps> = ({ selectedTab, onTabClick }) => {
             onClick={() => onTabClick(tab.status)}
           >
             {/* TODO: Check why color in prod is missing */}
-            <div className={`bg-${tab.status} p-2 rounded-md`}>
+            <div
+              className={`p-2 rounded-md ${
+                tab.status === "all"
+                  ? "bg-all"
+                  : tab.status === "complete"
+                  ? "bg-complete"
+                  : tab.status === "incomplete"
+                  ? "bg-incomplete"
+                  : "bg-deleted"
+              }`}
+            >
               <img
                 src={`/${tab.status}.svg`}
                 height={25}
@@ -38,7 +59,15 @@ const TaskFilter: React.FC<TaskFilterProps> = ({ selectedTab, onTabClick }) => {
             </div>
             <div>
               <p className="text-sm text-gray-300">{tab.label}</p>
-              <p className="font-bold">27</p>
+              <p className="font-bold">
+                {tab.status === "all"
+                  ? allTasksCount
+                  : tab.status === "complete"
+                  ? completeTasksCount
+                  : tab.status === "deleted"
+                  ? deletedTasksCount
+                  : incompleteTasksCount}
+              </p>
             </div>
           </div>
         ))}
