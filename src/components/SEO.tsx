@@ -16,7 +16,7 @@ const SEO = ({ title, description, type }: Props) => {
       <meta property="og:type" content={type} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
-      <meta property="og:url" content="www.google.com" />
+      <meta property="og:url" content="https://idea-management.vercel.app/" />
       <meta
         property="og:image"
         content="https://www.fao.org/images/corporatenavigationlibraries/default-album/3.jpg?sfvrsn=37b1831a_11"
