@@ -1,9 +1,9 @@
-import TableDemo from "@/components/Table";
-import SEO from "../components/SEO";
-import { fetchTodos } from "@/feature/todo/services/todoService";
 import { useState, useEffect } from "react";
+import { fetchTodos } from "@/feature/todo/services/todoService";
 import { TodoModel } from "@/feature/todo/models/todoModel";
 import TaskFilter from "@/components/TaskFilter";
+import TaskTable from "@/components/Table";
+import SEO from "@/components/SEO";
 
 const Home = () => {
   const [todos, setTodos] = useState<TodoModel[]>([]);
@@ -44,7 +44,7 @@ const Home = () => {
         type="article"
       />
 
-      <h1 className="text-bold text-xl text-white">Task Summary</h1>
+      <h1 className="text-bold text-xl text-white my-4">Task Summary</h1>
       {/* Filter */}
       <TaskFilter selectedTab={selectedTab} onTabClick={filterByStatus} />
 
@@ -52,7 +52,7 @@ const Home = () => {
       {loading ? (
         <p className="text-white">Loading</p>
       ) : (
-        <TableDemo caption={selectedTab} tasks={filteredTodos} />
+        <TaskTable caption={selectedTab} tasks={filteredTodos} />
       )}
     </section>
   );

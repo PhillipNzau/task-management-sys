@@ -15,7 +15,7 @@ interface TableDemoProps {
   caption: string;
 }
 
-const TableDemo: React.FC<TableDemoProps> = ({ tasks, caption }) => {
+const TaskTable: React.FC<TableDemoProps> = ({ tasks, caption }) => {
   return (
     <Table className="bg-white mt-10 rounded-md">
       <TableCaption>{caption.toUpperCase()} TASKS</TableCaption>
@@ -39,4 +39,4 @@ const TableDemo: React.FC<TableDemoProps> = ({ tasks, caption }) => {
   );
 };
 
-export default TableDemo;
+export default TaskTable;
