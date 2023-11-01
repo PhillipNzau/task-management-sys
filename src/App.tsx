@@ -16,7 +16,7 @@ const App: React.FC<{ children: ReactNode }> = ({ children }) => {
     <HelmetProvider>
       <AuthContext.Provider value={{ user, setUser }}>
         <TaskProvider>
-          <div className="overflow-hidden bg-slate-900 h-screen ">
+          <div className="overflow-x-hidden bg-slate-900 h-screen ">
             {!shouldHideNavbar && <Navbar />}
             <div>{children}</div>
           </div>

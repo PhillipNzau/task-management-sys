@@ -31,12 +31,12 @@ const TaskFilter: React.FC<TaskFilterProps> = ({
   ];
 
   return (
-    <div className="flex items-center justify-between">
-      <div className="flex items-center md:gap-24 justify-between">
+    <div className="flex flex-col gap-4 md:gap-0 md:flex-row md:items-center justify-between">
+      <div className="flex flex-col md:flex-row items-center gap-4 md:gap-24 justify-between">
         {tabs.map((tab) => (
           <div
             key={tab.status}
-            className={`flex items-center gap-4 text-white w-52 p-2 rounded-md transition-all duration-200 cursor-pointer ${
+            className={`flex items-center gap-4 text-white w-full md:w-56 p-2 rounded-md transition-all duration-200 cursor-pointer ${
               selectedTab === tab.status ? "bg-gray-700" : "hover:bg-gray-700"
             }`}
             onClick={() => onTabClick(tab.status)}
