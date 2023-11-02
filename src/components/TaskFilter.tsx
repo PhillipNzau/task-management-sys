@@ -31,7 +31,10 @@ const TaskFilter: React.FC<TaskFilterProps> = ({
   ];
 
   return (
-    <div className="flex flex-col md:flex-wrap gap-4 md:flex-row md:items-center justify-between">
+    <div
+      data-testid="task-filter"
+      className="flex flex-col md:flex-wrap gap-4 md:flex-row md:items-center justify-between"
+    >
       <div className="flex flex-col md:flex-row md:flex-wrap items-center gap-4  justify-between">
         {tabs.map((tab) => (
           <div
