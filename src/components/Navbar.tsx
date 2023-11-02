@@ -33,7 +33,7 @@ const Navbar = () => {
   }, [user, navigate]);
 
   return (
-    <nav className="border-b border-b-gray-700 text-white flex flex-col md:flex-row md:flex-wrap items-center justify-between gap-4 md:gap-10 py-6 px-6 md:px-20 md:py-4 ">
+    <nav className="border-b border-b-gray-700 text-white flex flex-col flex-wrap md:flex-nowrap md:flex-row items-center justify-between gap-4 md:gap-10 py-6 px-6 md:px-20 md:py-4 ">
       <div className="">
         <img
           src="/fao.webp"

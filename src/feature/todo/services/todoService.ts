@@ -39,7 +39,6 @@ export async function createTask(taskData: TodoModel): Promise<TodoModel> {
     });
 
     const createdTask: TodoModel = await response.json();
-    console.log('created', createdTask);
     
     return createdTask;
   } catch (error) {
@@ -59,7 +58,6 @@ export async function updateTask(id:string,taskData: TodoModel): Promise<TodoMod
     });
 
     const createdTask: TodoModel = await response.json();
-    console.log('created', createdTask);
     
     return createdTask;
   } catch (error) {
@@ -79,7 +77,6 @@ export async function deleteTask(id:string): Promise<TodoModel> {
     });
 
     const deleteTask: TodoModel = await response.json();
-    console.log('delete', deleteTask);
     
     return deleteTask;
   } catch (error) {

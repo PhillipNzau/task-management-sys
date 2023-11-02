@@ -9,6 +9,7 @@ import {
 import { createTask } from "@/feature/todo/services/todoService";
 import { useTask } from "@/feature/todo/context/TaskContext";
 import { useTranslation } from "react-i18next";
+import { toast } from "react-toastify";
 
 export function CreateTaskModal() {
   const [t] = useTranslation("global");
@@ -41,8 +42,28 @@ export function CreateTaskModal() {
 
       // Update the context with the newly created task
       addTask(task);
+      toast.success("Task Created!", {
+        position: "top-center",
+        autoClose: 4000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
     } catch (error) {
       // Handle errors here
+      toast.error(`${error}`, {
+        position: "top-center",
+        autoClose: 6000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
     }
 
     resetForm();

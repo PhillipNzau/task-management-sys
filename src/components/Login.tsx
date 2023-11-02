@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 import { LOGIN_USER } from "../feature/authentication/services/Login";
 import { useUser } from "../hooks/useUser";
+import { toast } from "react-toastify";
 
 const Login: React.FC = () => {
   const { user } = useUser();
@@ -62,11 +63,31 @@ const Login: React.FC = () => {
       login(user);
       // Redirect to a specific route upon successful login
       navigate("/");
+      toast.success("Login success!", {
+        position: "top-center",
+        autoClose: 4000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
       // Clear any previous error messages
       setError(null);
     } catch (error) {
       // Handle login failure by displaying an error message
       setError("Login failed. Please check your credentials.");
+      toast.error(`${error}`, {
+        position: "top-center",
+        autoClose: 6000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
     }
   };
 

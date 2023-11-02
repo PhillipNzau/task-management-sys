@@ -10,6 +10,7 @@ import { updateTask } from "@/feature/todo/services/todoService"; // Assuming Ta
 import { useTask } from "@/feature/todo/context/TaskContext";
 import { TodoModel } from "@/feature/todo/models/todoModel";
 import { useTranslation } from "react-i18next";
+import { toast } from "react-toastify";
 
 interface UpdateTaskModalProps {
   task: TodoModel;
@@ -48,9 +49,29 @@ export function UpdateTaskModal({ task }: UpdateTaskModalProps) {
       const updatedTask = await updateTask(task.id, data);
 
       // Update the context with the updated task
+      toast.success("Login successful!", {
+        position: "top-center",
+        autoClose: 4000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
       addTask(updatedTask);
     } catch (error) {
       // Handle errors here
+      toast.error(`${error}`, {
+        position: "top-center",
+        autoClose: 6000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
     }
   };
 

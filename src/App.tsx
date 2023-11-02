@@ -6,7 +6,8 @@ import { useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import { TaskProvider } from "./feature/todo/context/TaskContext";
 import { SearchProvider } from "./feature/todo/context/SearchContext";
-
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const App: React.FC<{ children: ReactNode }> = ({ children }) => {
   const { user, setUser } = useAuth();
   const location = useLocation();
@@ -21,6 +22,7 @@ const App: React.FC<{ children: ReactNode }> = ({ children }) => {
             <div className="overflow-x-hidden bg-slate-900 h-screen ">
               {!shouldHideNavbar && <Navbar />}
               <div>{children}</div>
+              <ToastContainer />
             </div>
           </TaskProvider>
         </SearchProvider>
