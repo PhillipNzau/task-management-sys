@@ -67,7 +67,7 @@ const Home = () => {
 
       {/* table */}
       {filteredTasks.length === 0 ? (
-        <p className="text-white">No tasks to display.</p>
+        <p className="text-white py-20 font-bold">No tasks yet.....</p>
       ) : (
         <TaskTable tasks={lifoTasks} />
       )}
