@@ -42,7 +42,7 @@ export function CreateTaskModal() {
 
       // Update the context with the newly created task
       addTask(task);
-      toast.success("Task Created!", {
+      toast.success(`${t("toast.create")}`, {
         position: "top-center",
         autoClose: 4000,
         hideProgressBar: false,

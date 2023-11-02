@@ -41,8 +41,14 @@
         "invalidEmail": "Adresse e-mail invalide.",
         "logging": "Connexion en cours.",
         "signing": "Inscription en cours."
-
-    }
+    },
+    "toast": {
+        "loginSuccess": "Connexion réussie !",
+        "signupSuccess": "Inscription réussie !",
+        "update": "Tâche mise à jour !",
+        "create": "Tâche créée !",
+        "delete": "Tâche supprimée !"
+    }    
     
     
 }

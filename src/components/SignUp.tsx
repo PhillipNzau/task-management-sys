@@ -82,7 +82,7 @@ const SignUp: React.FC = () => {
       // Redirect to a specific route upon successful login
       navigate("/");
 
-      toast.success("Signup successful!", {
+      toast.success(`${t("toast.signupSuccess")}`, {
         position: "top-center",
         autoClose: 4000,
         hideProgressBar: false,

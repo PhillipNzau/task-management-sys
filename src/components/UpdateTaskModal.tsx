@@ -49,7 +49,7 @@ export function UpdateTaskModal({ task }: UpdateTaskModalProps) {
       const updatedTask = await updateTask(task.id, data);
 
       // Update the context with the updated task
-      toast.success("Task Updated!", {
+      toast.success(`${t("toast.update")}`, {
         position: "top-center",
         autoClose: 4000,
         hideProgressBar: false,
@@ -79,7 +79,7 @@ export function UpdateTaskModal({ task }: UpdateTaskModalProps) {
     // Update the task's status to 'Incomplete' to restore it
     const data = { ...task, status: "incomplete" };
     const updatedTask = await updateTask(task.id, data);
-    toast.success("Task Deleted!", {
+    toast.success(`${t("toast.delete")}`, {
       position: "top-center",
       autoClose: 4000,
       hideProgressBar: false,

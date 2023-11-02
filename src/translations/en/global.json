@@ -42,5 +42,12 @@
         "invalidEmail": "Invalid email address.",
         "logging": "Logging in",
         "signing": "signing up"
+    },
+    "toast" : {
+        "loginSuccess": "Login Success!",
+        "signupSuccess": "Signup Success!",
+        "update": "Task Updated!",
+        "create": "Task Created!",
+        "delete": "Task Deleted!"
     }
 }
