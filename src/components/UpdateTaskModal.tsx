@@ -132,7 +132,7 @@ export function UpdateTaskModal({ task }: UpdateTaskModalProps) {
                   type="submit"
                   className="bg-green-400 px-4 py-2 text-white rounded-md"
                 >
-                  {t("update.taskName")}
+                  {t("update.title")}
                 </button>
               </DialogClose>
 

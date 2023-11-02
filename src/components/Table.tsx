@@ -37,7 +37,7 @@ const TaskTable: React.FC<TableDemoProps> = ({ tasks }) => {
             <Dialog key={task.id}>
               <DialogTrigger asChild>
                 <TableCell className="w-[100px]">
-                  <div className="flex items-center justify-center gap-2 hover:bg-gray-300 p-2 rounded-sm transition-all duration-200">
+                  <div className="flex items-center justify-center gap-2 cursor-pointer hover:bg-gray-300 p-2 rounded-sm transition-all duration-200">
                     Edit
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
