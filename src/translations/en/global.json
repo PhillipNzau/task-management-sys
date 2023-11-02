@@ -48,6 +48,7 @@
         "signupSuccess": "Signup Success!",
         "update": "Task Updated!",
         "create": "Task Created!",
-        "delete": "Task Deleted!"
+        "delete": "Task Deleted!",
+        "restored": "Task Restored!"
     }
 }

@@ -47,7 +47,8 @@
         "signupSuccess": "Inscription réussie !",
         "update": "Tâche mise à jour !",
         "create": "Tâche créée !",
-        "delete": "Tâche supprimée !"
+        "delete": "Tâche supprimée !",
+        "restored": "Tâche restaurée !"
     }    
     
     

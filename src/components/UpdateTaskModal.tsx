@@ -47,18 +47,22 @@ export function UpdateTaskModal({ task }: UpdateTaskModalProps) {
       };
 
       const updatedTask = await updateTask(task.id, data);
+      console.log("tas", data.status);
 
       // Update the context with the updated task
-      toast.success(`${t("toast.update")}`, {
-        position: "top-center",
-        autoClose: 4000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
-      });
+      toast.success(
+        `${data.status === "deleted" ? t("toast.delete") : t("toast.update")}`,
+        {
+          position: "top-center",
+          autoClose: 4000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        }
+      );
       addTask(updatedTask);
     } catch (error) {
       // Handle errors here
@@ -79,7 +83,7 @@ export function UpdateTaskModal({ task }: UpdateTaskModalProps) {
     // Update the task's status to 'Incomplete' to restore it
     const data = { ...task, status: "incomplete" };
     const updatedTask = await updateTask(task.id, data);
-    toast.success(`${t("toast.delete")}`, {
+    toast.success(`${t("toast.restored")}`, {
       position: "top-center",
       autoClose: 4000,
       hideProgressBar: false,
