@@ -17,5 +17,13 @@
         "deleted": "Tâches supprimées",
         "create": "Créer une tâche",
         "logout": "Déconnexion"
+    },
+    "update": {
+        "title": "Mettre à jour la tâche",
+        "taskName": "Mettre à jour le nom de la tâche",
+        "taskStatus": "Mettre à jour le statut de la tâche",
+        "close": "Fermer",
+        "restore": "Restaurer la tâche"
     }
+    
 }

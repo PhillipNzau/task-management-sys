@@ -7,10 +7,13 @@ import {
   DialogClose,
 } from "./ui/dialog";
 import { createTask } from "@/feature/todo/services/todoService";
-import { useTask } from "@/feature/todo/context/TaskContext"; // Import the useTask hook
+import { useTask } from "@/feature/todo/context/TaskContext";
+import { useTranslation } from "react-i18next";
 
 export function CreateTaskModal() {
-  const { addTask } = useTask(); // Access the addTask function from the context
+  const [t] = useTranslation("global");
+
+  const { addTask } = useTask();
 
   const initialValues = {
     name: "",
@@ -55,7 +58,7 @@ export function CreateTaskModal() {
         <DialogContent className="sm:max-w-md">
           <Form>
             <DialogHeader>
-              <DialogTitle>Create Task</DialogTitle>
+              <DialogTitle>{t("tabs.create")}</DialogTitle>
             </DialogHeader>
             <div className="flex items-center space-x-2">
               <div className="grid flex-1 gap-2">
@@ -64,7 +67,7 @@ export function CreateTaskModal() {
                     htmlFor="name"
                     className="block text-sm font-medium text-gray-700"
                   >
-                    Task Name
+                    {t("table.taskName")}
                   </label>
                   <Field
                     type="text"
@@ -86,7 +89,7 @@ export function CreateTaskModal() {
                   type="button"
                   className="bg-gray-700 px-4 py-2 text-white rounded-md"
                 >
-                  Close
+                  {t("update.close")}
                 </button>
               </DialogClose>
               <DialogClose asChild>
@@ -94,7 +97,7 @@ export function CreateTaskModal() {
                   type="submit"
                   className="bg-green-400 px-4 py-2 text-white rounded-md"
                 >
-                  Create Task
+                  {t("tabs.create")}
                 </button>
               </DialogClose>
             </DialogFooter>

@@ -18,5 +18,12 @@
         "create": "Create Task",
         "logout": "Logout"
 
+    },
+    "update": {
+        "title": "Update Task",
+        "taskName":"Update Task Name",
+        "taskStatus":"Update Task Status",
+        "close": "Close",
+        "restore": "Restore Task"
     }
 }

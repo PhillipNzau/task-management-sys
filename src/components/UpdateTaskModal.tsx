@@ -9,6 +9,7 @@ import {
 import { updateTask } from "@/feature/todo/services/todoService"; // Assuming TaskStatus is an enum
 import { useTask } from "@/feature/todo/context/TaskContext";
 import { TodoModel } from "@/feature/todo/models/todoModel";
+import { useTranslation } from "react-i18next";
 
 interface UpdateTaskModalProps {
   task: TodoModel;
@@ -16,6 +17,7 @@ interface UpdateTaskModalProps {
 
 export function UpdateTaskModal({ task }: UpdateTaskModalProps) {
   const { addTask } = useTask();
+  const [t] = useTranslation("global");
 
   const initialValues = {
     name: task.name,
@@ -34,7 +36,7 @@ export function UpdateTaskModal({ task }: UpdateTaskModalProps) {
 
   const handleSubmit = async (
     values: { name: string; status: string },
-    { resetForm }: any
+    {}: any
   ) => {
     try {
       // Create the task and get the response
@@ -50,8 +52,12 @@ export function UpdateTaskModal({ task }: UpdateTaskModalProps) {
     } catch (error) {
       // Handle errors here
     }
+  };
 
-    resetForm();
+  const restoreTask = (task: TodoModel) => {
+    // Update the task's status to 'Incomplete' to restore it
+    const updatedTask = { ...task, status: "incomplete" };
+    addTask(updatedTask);
   };
 
   return (
@@ -64,16 +70,16 @@ export function UpdateTaskModal({ task }: UpdateTaskModalProps) {
         <DialogContent className="sm:max-w-md">
           <Form>
             <DialogHeader>
-              <DialogTitle>Update Task</DialogTitle>
+              <DialogTitle>{t("update.title")}</DialogTitle>
             </DialogHeader>
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-2 mt-2">
               <div className="grid flex-1 gap-2">
                 <div className="mb-4">
                   <label
                     htmlFor="name"
                     className="block text-sm font-medium text-gray-700"
                   >
-                    Task Name
+                    {t("update.taskName")}
                   </label>
                   <Field
                     type="text"
@@ -92,7 +98,7 @@ export function UpdateTaskModal({ task }: UpdateTaskModalProps) {
                     htmlFor="status"
                     className="block text-sm font-medium text-gray-700"
                   >
-                    Task Status
+                    {t("update.taskStatus")}
                   </label>
                   <Field
                     as="select"
@@ -102,7 +108,12 @@ export function UpdateTaskModal({ task }: UpdateTaskModalProps) {
                   >
                     <option value="incomplete">Incomplete</option>
                     <option value="complete">Complete</option>
-                    <option value="deleted">Delete</option>
+                    <option
+                      hidden={initialValues.status === "deleted"}
+                      value="deleted"
+                    >
+                      Delete
+                    </option>
                   </Field>
                 </div>
               </div>
@@ -113,7 +124,7 @@ export function UpdateTaskModal({ task }: UpdateTaskModalProps) {
                   type="button"
                   className="bg-gray-700 px-4 py-2 text-white rounded-md"
                 >
-                  Close
+                  {t("update.close")}
                 </button>
               </DialogClose>
               <DialogClose asChild>
@@ -121,9 +132,21 @@ export function UpdateTaskModal({ task }: UpdateTaskModalProps) {
                   type="submit"
                   className="bg-green-400 px-4 py-2 text-white rounded-md"
                 >
-                  Update Task
+                  {t("update.taskName")}
                 </button>
               </DialogClose>
+
+              {initialValues.status === "deleted" && (
+                <DialogClose asChild>
+                  <button
+                    onClick={() => restoreTask(task)}
+                    className="bg-[#939581] px-4 py-2 text-white rounded-md"
+                  >
+                    {" "}
+                    {t("update.restore")}
+                  </button>
+                </DialogClose>
+              )}
             </DialogFooter>
           </Form>
         </DialogContent>
