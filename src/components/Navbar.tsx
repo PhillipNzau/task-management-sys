@@ -86,7 +86,7 @@ const Navbar = () => {
         {user && (
           <button
             onClick={handleLogout}
-            className="min-w-[100px] h-[35px] px-4 bg-blue-500 text-white text-base hover:bg-blue-800 rounded-sm transition-all duration-200 font-metrophobic"
+            className="min-w-[100px] h-[35px] px-4 bg-[#5792c9] text-white text-base hover:bg-blue-800 rounded-sm transition-all duration-200 font-metrophobic"
           >
             {t("tabs.logout")}
           </button>

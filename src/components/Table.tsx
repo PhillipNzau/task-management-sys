@@ -33,7 +33,19 @@ const TaskTable: React.FC<TableDemoProps> = ({ tasks }) => {
           <TableRow key={task.id}>
             <TableCell className="w-[100px] font-medium">{index + 1}</TableCell>
             <TableCell className="w-[100px]">{task.name}</TableCell>
-            <TableCell className="">{task.status}</TableCell>
+            <TableCell
+              className={`font-bold ${
+                task.status === "complete"
+                  ? "text-complete"
+                  : task.status === "incomplete"
+                  ? "text-incomplete"
+                  : task.status === "deleted"
+                  ? "text-deleted"
+                  : ""
+              }`}
+            >
+              {task.status}
+            </TableCell>
             <Dialog key={task.id}>
               <DialogTrigger asChild>
                 <TableCell className="w-[100px]">

@@ -4,8 +4,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 import { SIGNUP_USER } from "../feature/authentication/services/Login";
 import { toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
 
 const SignUp: React.FC = () => {
+  const [t] = useTranslation("global");
+
   const navigate = useNavigate();
   const { login } = useAuth();
   const [error, setError] = useState<string | null>(null);
@@ -34,25 +37,25 @@ const SignUp: React.FC = () => {
     } = {};
 
     if (!values.first_name) {
-      errors.first_name = "first name Required";
+      errors.first_name = `${t("form.first")} ${t("form.required")}`;
     }
 
     if (!values.last_name) {
-      errors.last_name = "second name Required";
+      errors.last_name = `${t("form.last")} ${t("form.required")}`;
     }
 
     if (!values.role) {
-      errors.role = "role Required";
+      errors.role = `${t("form.role")} ${t("form.required")}`;
     }
 
     if (!values.email) {
-      errors.email = "Email Required";
+      errors.email = `${t("form.email")} ${t("form.required")}`;
     } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
-      errors.email = "Invalid email address";
+      errors.email = `${t("form.invalidEmail")}`;
     }
 
     if (!values.password) {
-      errors.password = "Password Required";
+      errors.password = `${t("form.password")} ${t("form.required")}`;
     }
 
     return errors;
@@ -93,7 +96,7 @@ const SignUp: React.FC = () => {
       setError(null);
     } catch (error) {
       // Handle login failure by displaying an error message
-      setError("signup failed. Please check your credentials.");
+      setError(`${t("form.errorSignup")}`);
       toast.error(`${error}`, {
         position: "top-center",
         autoClose: 6000,
@@ -128,8 +131,8 @@ const SignUp: React.FC = () => {
               <Field
                 type="text"
                 name="first_name"
-                placeholder="First Name"
-                className="bg-transparent outline-blue-500 border border-slate-300 p-2  text-blue-500 font-metrophobic w-full h-14"
+                placeholder={t("form.first")}
+                className="bg-transparent outline-[#5792c9] border border-slate-300 p-2  text-[#5792c9] font-metrophobic w-full h-14"
               />
               <ErrorMessage
                 name="first_name"
@@ -140,8 +143,8 @@ const SignUp: React.FC = () => {
               <Field
                 type="text"
                 name="last_name"
-                placeholder="Last Name"
-                className="bg-transparent outline-blue-500 border border-slate-300 p-2  text-blue-500 font-metrophobic w-full h-14"
+                placeholder={t("form.last")}
+                className="bg-transparent outline-[#5792c9] border border-slate-300 p-2  text-[#5792c9] font-metrophobic w-full h-14"
               />
               <ErrorMessage
                 name="last_name"
@@ -152,8 +155,8 @@ const SignUp: React.FC = () => {
               <Field
                 type="email"
                 name="email"
-                placeholder="Email"
-                className="bg-transparent outline-blue-500 border border-slate-300 p-2  text-blue-500 font-metrophobic w-full h-14"
+                placeholder={t("form.email")}
+                className="bg-transparent outline-[#5792c9] border border-slate-300 p-2  text-[#5792c9] font-metrophobic w-full h-14"
               />
               <ErrorMessage
                 name="email"
@@ -164,8 +167,8 @@ const SignUp: React.FC = () => {
               <Field
                 type="password"
                 name="password"
-                placeholder="Password"
-                className="bg-transparent outline-blue-500 border border-slate-300 p-2  text-blue-500 font-metrophobic w-full h-14"
+                placeholder={t("form.password")}
+                className="bg-transparent outline-[#5792c9] border border-slate-300 p-2  text-[#5792c9] font-metrophobic w-full h-14"
               />
               <ErrorMessage
                 name="password"
@@ -176,7 +179,7 @@ const SignUp: React.FC = () => {
               <Field
                 as="select"
                 name="role"
-                className="bg-transparent outline-blue-500 border border-slate-300 p-2  text-blue-500 font-metrophobic w-full h-14"
+                className="bg-transparent outline-[#5792c9] border border-slate-300 p-2  text-[#5792c9] font-metrophobic w-full h-14"
               >
                 <option value="admin">Admin</option>
 
@@ -187,20 +190,22 @@ const SignUp: React.FC = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className={`mt-4 bg-blue-500 text-white w-full h-14  font-metrophobic font-bold ${
+                className={`mt-4 bg-[#5792c9] text-white w-full h-14  font-metrophobic font-bold ${
                   isSubmitting ? "opacity-50 cursor-not-allowed" : ""
                 }`}
               >
-                {isSubmitting ? "Signing up..." : "Signup"}
+                {isSubmitting
+                  ? `${t("form.signing")}...`
+                  : `${t("form.signup")}`}
               </button>
 
               {/* Display error message if there is one */}
               {error && <p className="text-red-500">{error}</p>}
 
-              <p className="text-blue-500 font-metrophobic">
-                Already have an account?{" "}
+              <p className="text-[#5792c9] font-metrophobic">
+                {t("form.descLog")}{" "}
                 <span className="hover:cursor-pointer underline underline-offset-4">
-                  <Link to="/login">login</Link>
+                  <Link to="/login">{t("form.login")}</Link>
                 </span>
               </p>
             </Form>

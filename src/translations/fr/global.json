@@ -24,6 +24,25 @@
         "taskStatus": "Mettre à jour le statut de la tâche",
         "close": "Fermer",
         "restore": "Restaurer la tâche"
+    },
+    "form": {
+        "first": "Prénom",
+        "last": "Nom de famille",
+        "email": "E-mail",
+        "password": "Mot de passe",
+        "login": "Se connecter",
+        "signup": "S'inscrire",
+        "role":"Rôle.",
+        "descSign": "Vous n'avez pas de compte ?",
+        "descLog": "Vous avez déjà un compte ?",
+        "error": "Échec de la connexion. Veuillez vérifier vos identifiants.",
+        "errorSignup": "L'inscription a échoué. Veuillez vérifier vos informations d'identification.",
+        "required": "Requis",
+        "invalidEmail": "Adresse e-mail invalide.",
+        "logging": "Connexion en cours.",
+        "signing": "Inscription en cours."
+
     }
+    
     
 }

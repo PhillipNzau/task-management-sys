@@ -75,9 +75,20 @@ export function UpdateTaskModal({ task }: UpdateTaskModalProps) {
     }
   };
 
-  const restoreTask = (task: TodoModel) => {
+  const restoreTask = async (task: TodoModel) => {
     // Update the task's status to 'Incomplete' to restore it
-    const updatedTask = { ...task, status: "incomplete" };
+    const data = { ...task, status: "incomplete" };
+    const updatedTask = await updateTask(task.id, data);
+    toast.success("Task Deleted!", {
+      position: "top-center",
+      autoClose: 4000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });
     addTask(updatedTask);
   };
 

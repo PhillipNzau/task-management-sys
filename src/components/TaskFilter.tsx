@@ -81,7 +81,7 @@ const TaskFilter: React.FC<TaskFilterProps> = ({
 
       <Dialog>
         <DialogTrigger asChild>
-          <button className="bg-blue-500 px-4 py-2 text-white rounded-sm hover:bg-blue-600 transition-all duration-200">
+          <button className="bg-[#5792c9] px-4 py-2 text-white rounded-sm hover:bg-blue-600 transition-all duration-200">
             {t("tabs.create")}
           </button>
         </DialogTrigger>

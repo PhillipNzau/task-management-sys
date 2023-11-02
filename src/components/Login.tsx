@@ -5,8 +5,11 @@ import { useAuth } from "../hooks/useAuth";
 import { LOGIN_USER } from "../feature/authentication/services/Login";
 import { useUser } from "../hooks/useUser";
 import { toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
 
 const Login: React.FC = () => {
+  const [t] = useTranslation("global");
+
   const { user } = useUser();
   const navigate = useNavigate();
 
@@ -34,14 +37,14 @@ const Login: React.FC = () => {
 
     // Validate the email field
     if (!values.email) {
-      errors.email = "Email Required";
+      errors.email = `${t("form.email")} ${t("form.required")}`;
     } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
-      errors.email = "Invalid email address";
+      errors.email = `${t("form.invalidEmail")}`;
     }
 
     // Validate the password field
     if (!values.password) {
-      errors.password = "Password Required";
+      errors.password = `${t("form.password")} ${t("form.required")}`;
     }
 
     return errors;
@@ -77,7 +80,7 @@ const Login: React.FC = () => {
       setError(null);
     } catch (error) {
       // Handle login failure by displaying an error message
-      setError("Login failed. Please check your credentials.");
+      setError(`${t("form.error")}`);
       toast.error(`${error}`, {
         position: "top-center",
         autoClose: 6000,
@@ -113,8 +116,8 @@ const Login: React.FC = () => {
               <Field
                 type="email"
                 name="email"
-                placeholder="Email"
-                className="bg-transparent outline-blue-500 border border-slate-300 p-2  text-blue-500 font-metrophobic w-full h-14"
+                placeholder={t("form.email")}
+                className="bg-transparent outline-[#5792c9] border border-slate-300 p-2  text-[#5792c9] font-metrophobic w-full h-14"
               />
               <ErrorMessage
                 name="email"
@@ -126,8 +129,8 @@ const Login: React.FC = () => {
               <Field
                 type="password"
                 name="password"
-                placeholder="Password"
-                className="bg-transparent outline-blue-500 border border-slate-300 p-2  text-blue-500 font-metrophobic w-full h-14"
+                placeholder={t("form.password")}
+                className="bg-transparent outline-[#5792c9] border border-slate-300 p-2  text-[#5792c9] font-metrophobic w-full h-14"
               />
               <ErrorMessage
                 name="password"
@@ -139,21 +142,23 @@ const Login: React.FC = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className={`mt-12 bg-blue-500 text-white w-full h-14  font-metrophobic font-bold ${
+                className={`mt-12 bg-[#5792c9] text-white w-full h-14  font-metrophobic font-bold ${
                   isSubmitting ? "opacity-50 cursor-not-allowed" : ""
                 }`}
               >
-                {isSubmitting ? "Logging in..." : "Login"}
+                {isSubmitting
+                  ? `${t("form.logging")}...`
+                  : `${t("form.login")}`}
               </button>
 
               {/* Display error message if there is one */}
               {error && <p className="text-red-500">{error}</p>}
 
               {/* Sign-up link */}
-              <p className="text-blue-500 font-metrophobic">
-                Don't have an account?{" "}
+              <p className="text-[#5792c9] font-metrophobic">
+                {t("form.descSign")}{" "}
                 <span className="hover:cursor-pointer underline underline-offset-4">
-                  <Link to="/register">Sign-up</Link>
+                  <Link to="/register">{t("form.signup")}</Link>
                 </span>
               </p>
             </Form>

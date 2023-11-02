@@ -25,5 +25,22 @@
         "taskStatus":"Update Task Status",
         "close": "Close",
         "restore": "Restore Task"
+    },
+    "form" :{
+        "first":"First Name",
+        "last":"Last Name",
+        "email":"Email",
+        "password":"Password",
+        "login": "Login",
+        "signup":"Signup",
+        "role": "role",
+        "descSign": "Don't have an account?",
+        "descLog": "Already have an account?",
+        "error": "Login failed. Please check your credentials.",
+        "errorSignup": "Signup failed. Please check your credentials.",
+        "required": "Required",
+        "invalidEmail": "Invalid email address.",
+        "logging": "Logging in",
+        "signing": "signing up"
     }
 }
