@@ -31,8 +31,8 @@ const TaskFilter: React.FC<TaskFilterProps> = ({
   ];
 
   return (
-    <div className="flex flex-col gap-4 md:gap-0 md:flex-row md:items-center justify-between">
-      <div className="flex flex-col md:flex-row items-center gap-4 md:gap-24 justify-between">
+    <div className="flex flex-col md:flex-wrap gap-4 md:flex-row md:items-center justify-between">
+      <div className="flex flex-col md:flex-row md:flex-wrap items-center gap-4  justify-between">
         {tabs.map((tab) => (
           <div
             key={tab.status}
