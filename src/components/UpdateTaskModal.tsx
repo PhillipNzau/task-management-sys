@@ -49,7 +49,7 @@ export function UpdateTaskModal({ task }: UpdateTaskModalProps) {
       const updatedTask = await updateTask(task.id, data);
 
       // Update the context with the updated task
-      toast.success("Login successful!", {
+      toast.success("Task Updated!", {
         position: "top-center",
         autoClose: 4000,
         hideProgressBar: false,
