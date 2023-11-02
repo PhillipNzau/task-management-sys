@@ -51,7 +51,7 @@ export async function createTask(taskData: TodoModel): Promise<TodoModel> {
 export async function updateTask(id:string,taskData: TodoModel): Promise<TodoModel> {
   try {
     const response = await makeRequest(`${API_URLS.TODO_API_URL}/${id}`, {
-      method: 'PATCH',
+      method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
       },

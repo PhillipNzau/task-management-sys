@@ -3,13 +3,19 @@ import { useAuth } from "../hooks/useAuth";
 import { useUser } from "../hooks/useUser";
 import { useTranslation } from "react-i18next";
 import { useEffect } from "react";
+import { useSearch } from "@/feature/todo/context/SearchContext";
 
 const Navbar = () => {
   const [t, i18n] = useTranslation("global");
   const { logout } = useAuth();
   const { user } = useUser();
   const navigate = useNavigate();
-
+  const { searchQuery, setSearchQuery } = useSearch();
+  const handleSearchInputChange = (e: {
+    target: { value: string | undefined };
+  }) => {
+    setSearchQuery(e.target.value);
+  };
   const handleLogout = () => {
     // Simulate a logout action
     logout();
@@ -61,6 +67,8 @@ const Navbar = () => {
             type="search"
             name="search"
             id="search"
+            value={searchQuery || ""}
+            onChange={handleSearchInputChange}
           />
         </div>
         <div></div>

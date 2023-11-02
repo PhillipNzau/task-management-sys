@@ -4,11 +4,13 @@ import TaskTable from "@/components/Table";
 import SEO from "@/components/SEO";
 import { useTask } from "@/feature/todo/context/TaskContext";
 import { useTranslation } from "react-i18next";
+import { useSearch } from "@/feature/todo/context/SearchContext";
+import { TodoModel } from "@/feature/todo/models/todoModel";
 
 const Home = () => {
   const { tasks } = useTask();
   const [t] = useTranslation("global");
-
+  const { searchQuery } = useSearch();
   const allTasksCount = tasks.length;
   const completeTasksCount = tasks.filter(
     (task) => task.status === "complete"
@@ -26,6 +28,12 @@ const Home = () => {
     setSelectedTab(status);
   };
 
+  const filterBySearchQuery = (task: TodoModel) => {
+    return (
+      task.name.toLowerCase().includes(searchQuery?.toLowerCase() || "") ||
+      task.status.toLowerCase().includes(searchQuery?.toLowerCase() || "")
+    );
+  };
   // Filter tasks based on the selected tab
   const filteredTasks =
     selectedTab === "all"
@@ -35,9 +43,9 @@ const Home = () => {
       : selectedTab === "deleted"
       ? tasks.filter((task) => task.status === "deleted")
       : tasks.filter((task) => task.status === "incomplete");
+  const searchFilteredTasks = filteredTasks.filter(filterBySearchQuery);
   // Reverse the order of filteredTasks to display in LIFO order
-  const lifoTasks = filteredTasks.slice().reverse();
-
+  const lifoTasks = searchFilteredTasks.slice().reverse();
   return (
     <section className="px-6 py-6 md:px-20">
       <SEO
